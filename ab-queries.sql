@@ -48,6 +48,17 @@ FROM marketing_ab
 WHERE converted = 'True'
 GROUP BY test_group;
 
+-- converion rate by test group
+
+SELECT
+    test_group,
+    COUNT(*) AS total,
+    SUM(converted = 'True') AS conversions,
+    (SUM(converted = 'True') / COUNT(*)) * 100 AS conversion_rate
+FROM marketing_ab
+GROUP BY test_group;
+
+
 
 
 
